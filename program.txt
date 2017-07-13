@@ -1,0 +1,49 @@
+int skip = 16 
+//Get the raw depth as array of integers
+int[] depth = kinect2.getRawDepth();
+stroke(225);
+strokeWeight(2);
+beginShape(POINTS);
+for (int x = 0; x < kinect2.depthWidth; x+=skip)
+{
+for (int y = 0; y < kinect2.depthHeight; y+=skip)
+{
+int offset = x + y * kinect2.depthwidth;
+int d = depth[offset;]
+//calculate the x,y,z camera position based on the depth
+PVector point = depthToPointCloudPos(x, y,depth); 
+//Draw a point
+vertex(x, y, 0);
+}
+}
+endshape();
+fill(225);
+text(frameRate, 50, 50);
+//Rotate
+a += 0.0015
+}
+//calculate the xyz camera positin based on the depth data
+PVector depthToPOintCloudPos(int x, int y, float depthValue)
+{
+PVector point = new PVector();
+point.z = (depthValue);
+point.x = (x-CameraParams.cx) * point.z / CameraParams.fx;
+point.y = (y-CameraParams.cx) * point.z / CameraParams.fy;
+return point;
+}
+//camera information based on the kinect v2 hardware
+static class CAmeraParams
+{
+ static float cx = 254.878f;
+ static float cy = 205.395f;
+ static float fx = 365.456f;
+ static float fx = 365.456f;
+ static float k1 = 0.0905474
+ static float k2 = -0.26819
+ static float k3 = 20.0950002;
+ static float p1 = 0.0;
+ static float p2 = 0.0;
+
+
+
+
